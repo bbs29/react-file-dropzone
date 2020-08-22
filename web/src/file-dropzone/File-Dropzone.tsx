@@ -15,6 +15,8 @@ const FileDropzoneComponent = (props: IProps) => {
 
   const [highlight, setHighlight] = React.useState<boolean>(false);
 
+  //#region 'File upload - Browse click'
+
   const onFilesAdded = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
     if (props.disabled) return;
@@ -32,6 +34,10 @@ const FileDropzoneComponent = (props: IProps) => {
     }
     fileInputRef && fileInputRef.click();
   };
+
+  //#endregion
+
+  //#region 'File drag n drop'
 
   const onDragOver = (e: React.DragEvent<HTMLDivElement>) => {
     e.preventDefault();
@@ -60,6 +66,8 @@ const FileDropzoneComponent = (props: IProps) => {
     props.onFilesAdded([]);
     setHighlight(false);
   };
+
+  //#endregion
 
   return (
     <div
