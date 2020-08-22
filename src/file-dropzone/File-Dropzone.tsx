@@ -83,7 +83,7 @@ const FileDropzoneComponent = (props: IProps) => {
           multiple={props.multiple ? true : false}
           onChange={onFilesAdded}
         />
-        <p style={{ fontSize: "large" }}>
+        <p>
           Drag and drop or{" "}
           <span
             className="browse"

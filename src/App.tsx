@@ -7,7 +7,7 @@ function App() {
     <div className="container">
       <div className="row mt-5 mb-4">
         <div className="col d-flex justify-content-center p-4">
-          <h1>File dropzone</h1>
+          <h1>File upload and dropzone</h1>
         </div>
       </div>
       <div className="row">
