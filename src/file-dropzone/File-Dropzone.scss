@@ -1,0 +1,23 @@
+.dropzone-wrapper {
+  cursor: default;
+
+  &.disabled {
+    background: #f2f2f2;
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+
+  .dropzone {
+    border: 2px dashed rgb(187, 186, 186);
+    min-height: 100px;
+
+    .browse {
+      text-decoration: underline;
+      color: #0a9bcd;
+    }
+
+    &.highlight {
+      background-color: #f2f2f2;
+    }
+  }
+}
