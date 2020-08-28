@@ -1,20 +1,33 @@
-## react-file-dropzone
+# react-file-dropzone
 
 A react app with file upload and drag n drop feature.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
 
-In the project directory, you can run:
+## Screenshots
 
-### `npm start`
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Test the application
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+### Run the backend service.
+ 
+Go to the service directory and run the following commands.
+ 
+ - #### `npm install`. Installs all application dependencies.
+ 
+ - #### `npm start`. Runs the nodejs service in development mode at port 7000. The url of the upload service is [http://localhost:7000/upload](http://localhost:7000/upload)
+ 
+  
+### Run the frontend react app.
+
+Go to the web directory and run the following commands.
+ 
+ - #### `npm install`. Installs all application dependencies.
+ 
+ - #### `npm start`. Runs the app in the development mode. Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+
 
 
 
