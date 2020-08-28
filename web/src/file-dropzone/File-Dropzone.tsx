@@ -76,7 +76,7 @@ const FileDropzoneComponent = (props: IProps) => {
       }`}
     >
       <div
-        className={`w-100 dropzone rounded d-flex flex-column justify-content-center align-items-center ${
+        className={`w-100 dropzone p-2 rounded d-flex flex-column justify-content-center align-items-center ${
           highlight ? "highlight" : ""
         }`}
         onDragOver={onDragOver}
@@ -91,19 +91,22 @@ const FileDropzoneComponent = (props: IProps) => {
           multiple={props.multiple ? true : false}
           onChange={onFilesAdded}
         />
-        <p>
-          Drag and drop or{" "}
-          <span
-            className="browse"
-            onClick={openFileDialog}
-            style={{
-              cursor: props.disabled ? "default" : "pointer",
-              color: props.disabled ? "inherit" : "#0a9bcd",
-            }}
-          >
-            browse
-          </span>
-        </p>
+        <span className="pt-1">
+          <i className="material-icons">cloud_upload</i>
+        </span>
+        <p className="mb-0 pb-0">Drag and drop</p>
+        <p className="mb-1">or</p>
+        <button
+          type="button"
+          className="btn btn-secondary w-25 mb-1"
+          disabled={props.disabled}
+          onClick={openFileDialog}
+          style={{
+            cursor: props.disabled ? "default" : "pointer",
+          }}
+        >
+          Upload
+        </button>
         {props.validationMessages && props.validationMessages.length
           ? props.validationMessages.map((message: string, index: number) => {
               return (
