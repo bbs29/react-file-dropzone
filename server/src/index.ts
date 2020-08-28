@@ -10,7 +10,7 @@ import upload from "./upload";
  * App Variables
  */
 const app = express();
-const PORT: number = 7000;
+const PORT: number | string = process.env.PORT || 7000;
 
 /**
  *  App Configuration
