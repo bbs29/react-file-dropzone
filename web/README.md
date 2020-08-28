@@ -5,7 +5,12 @@ A react app with file upload and drag n drop feature.
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 
+
 ## Screenshots
+
+![image](https://user-images.githubusercontent.com/60278095/91617472-fff86580-e93c-11ea-933b-4d2dd91a9df9.png)
+
+
 
 
 ## Test the application
@@ -28,6 +33,17 @@ Go to the web directory and run the following commands.
  - #### `npm start`. Runs the app in the development mode. Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 
+## Tech stack
+- Frontend:
+  - react@16
+  - bootstrap
+  - axios
+  - typescript
+  
+- Backend:
+  - express
+  - formidable
+  - Typescript
 
 
 
