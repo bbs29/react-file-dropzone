@@ -3,7 +3,11 @@ import axios, { AxiosInstance } from "axios";
 const POST_FILE_UPLOAD = "upload";
 
 const ApiService: AxiosInstance = axios.create({
-  baseURL: "http://localhost:7000/",
+  baseURL: `${
+    process.env.NODE_ENV === "development"
+      ? "http://localhost:7000/"
+      : "https://react-file-upload-service.herokuapp.com/"
+  }`,
 });
 
 const uploadFile = async (file: File, fileIndex: number, progressCb: any) => {

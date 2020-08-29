@@ -6,7 +6,8 @@
   "scripts": {
     "build": "tsc",
     "start": "ts-node src/index.ts",
-    "webpack": "webpack --config webpack.config.ts"
+    "webpack": "webpack --config webpack.config.ts",
+    "dev": "PORT=7000 npm start"
   },
   "author": "",
   "license": "ISC",
