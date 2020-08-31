@@ -10,14 +10,14 @@ const ApiService: AxiosInstance = axios.create({
   }`,
 });
 
-const uploadFile = async (file: File, fileIndex: number, progressCb: any) => {
+const uploadFile = async (file: File, progressCb: any) => {
   const config = {
     onUploadProgress: function (progressEvent: any) {
       var percentCompleted = Math.round(
         (progressEvent.loaded * 100) / progressEvent.total
       );
 
-      progressCb(percentCompleted, fileIndex);
+      progressCb(percentCompleted, file.name);
     },
   };
   let formData = new FormData();

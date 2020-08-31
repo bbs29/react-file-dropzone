@@ -20,10 +20,16 @@ function App() {
     setFiles(_files);
   };
 
-  const onFileUploadProgress = (progress: number, fileIndex: number) => {
+  const onFileUploadProgress = (progress: number, fileName: string) => {
     const _files: IFileModel[] = [...files];
-    _files[fileIndex].status = "Progress";
-    _files[fileIndex].uploadProgress = progress;
+    const _fileIndex: number = _files.findIndex(
+      (f: IFileModel) => f.file.name === fileName
+    );
+    if (_fileIndex !== -1) {
+      _files[_fileIndex].uploadProgress = 100;
+      _files[_fileIndex].status = "Complete";
+    }
+
     setFiles(_files);
   };
 
@@ -69,34 +75,35 @@ function App() {
     try {
       setUploadProgress(true);
 
+      const _notCompletedFiles: IFileModel[] = files.filter(
+        (file: IFileModel) => file.status === "None"
+      );
+
       Promise.allSettled(
-        files.map(async (file: IFileModel, index: number) => {
+        _notCompletedFiles.map(async (file: IFileModel, index: number) => {
           const response: any = await uploadFile(
             file.file,
-            index,
             onFileUploadProgress
           );
           return {
             response,
-            index,
+            file,
           };
         })
       ).then((results: any[]) => {
         let _files: IFileModel[] = [...files];
+
         results.map((result: any) => {
           if (result.status === "fulfilled") {
-            _files[result.value.index].uploadProgress = 100;
-            _files[result.value.index].status = "Complete";
+            const _fileIndex: number = _files.findIndex(
+              (f: IFileModel) => f.file.name === result.value.file.file.name
+            );
+            if (_fileIndex !== -1) {
+              _files[_fileIndex].uploadProgress = 100;
+              _files[_fileIndex].status = "Complete";
+            }
           }
           return null;
-        });
-
-        _files = [..._files].map((f: IFileModel) => {
-          if (f.status === "Progress") {
-            f.status = "Fail";
-            f.uploadProgress = 0;
-          }
-          return f;
         });
 
         setFiles(_files);
@@ -104,6 +111,19 @@ function App() {
 
       setUploadProgress(false);
     } catch (error) {}
+  };
+
+  const filterUniqueFiles = (files: IFileModel[]) => {
+    let _files: IFileModel[] = [];
+
+    files.map((file: IFileModel) => {
+      if (!_files.some((_f: IFileModel) => _f.file.name === file.file.name)) {
+        _files.push(file);
+      }
+      return file;
+    });
+
+    return _files;
   };
 
   return (
@@ -123,7 +143,7 @@ function App() {
                     uploadProgress: 0,
                   };
                 });
-                setFiles([...files, ...newFiles]);
+                setFiles(filterUniqueFiles([...files, ...newFiles]));
               }}
             />
           </section>
