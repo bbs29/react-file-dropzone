@@ -1,7 +1,7 @@
 
 # react-file-dropzpne
 
-A react app to drag n drop and browse features to upload files.
+A file upload react app with drag n drop and browse features.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
